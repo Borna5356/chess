@@ -49,20 +49,35 @@ class Board:
             print(index, end = '  ')
             for position in self.__board[index]:
                 if (position != '-'):
-                    piece = position
-                    if (piece.get_shorthand() == "Kn"):
-                        print(piece.get_shorthand(), end = '  ')
+                    pawn = position
+                    if (pawn.get_color() == "black"):
+
+                        if (pawn.get_shorthand() == "Kn"):
+                            print("\033[34m" + pawn.get_shorthand() + "\033[37m", end = '  ')
+                        else:
+                            print("\033[34m" + pawn.get_shorthand() + "\033[37m", end = '   ')
+
                     else:
-                        print(piece.get_shorthand(), end = '   ')
+                        if (pawn.get_shorthand() == "Kn"):
+                            print(pawn.get_shorthand(), end = '  ')
+                        else:
+                            print(pawn.get_shorthand(), end = '   ')
                 else:
                     print(position, end = '   ')
             print()
     
 def main():
-    piece = pieces.Piece("pawn", "white", (3, 4))
-    other_piece = pieces.Piece("knight", "white", (1, 2))
-    white_pieces = [piece, other_piece]
-    board = Board(white_pieces, [])
+    black_pieces = []
+    for col_num in range(8):   
+        pawn = pieces.Piece("pawn", "black", (1, col_num))
+        black_pieces.append(pawn)
+    knight = pieces.Piece("knight", "black", (0, 1))
+    black_pieces.append(knight)
+    queen = pieces.Piece("queen", "black", (0, 4))
+    king = pieces.Piece("king", "black", (0, 3))
+    black_pieces.append(queen)
+    black_pieces.append(king)
+    board = Board([], black_pieces)
     board.print_board()
 
 if (__name__ == "__main__"):

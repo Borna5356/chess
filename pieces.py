@@ -38,3 +38,11 @@ class Piece:
 
         """
         return self.__shorthand
+    
+    def get_color(self):
+        """
+        returns the color of the 
+        piece
+
+        """
+        return self.__color
