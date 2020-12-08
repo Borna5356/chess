@@ -35,4 +35,35 @@ class Board:
         for piece in self.__black_pieces:
             position = piece.get_position()
             self.__board[position[0]][position[1]] = piece
+    
+    def print_board(self):
+        """
+        prints the chess board
+
+        """
+        print('  ', end = '')
+        for num in range(8):
+            print(num, end = '   ')
+        print()
+        for index in range(len(self.__board)):
+            print(index, end = ' ')
+            for position in self.__board[index]:
+                if (position != '-'):
+                    piece = position
+                    if (piece.get_shorthand() == "WKn") or (piece.get_shorthand() == "BKn"):
+                        print(piece.get_shorthand(), end = ' ')
+                    else:
+                        print(piece.get_shorthand(), end = '  ')
+                else:
+                    print(position, end = '   ')
+            print()
+    
+def main():
+    piece = pieces.Piece("knight", "white", (0, 0))
+    white_pieces = [piece]
+    board = Board(white_pieces, [])
+    board.print_board()
+
+if (__name__ == "__main__"):
+    main()
 
