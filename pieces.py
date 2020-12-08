@@ -9,9 +9,9 @@ class Piece:
     different types of pieces
 
     """
-    __slots__ = ["__name", "__color","__current_position", "__shorthand", "__power"]
+    __slots__ = ["__name", "__color","__current_position", "__shorthand", "__ability"]
 
-    def __init__(self, name, color, current_position, power = 0):
+    def __init__(self, name, color, current_position, ability):
         """
         initializes a piece
 
@@ -20,4 +20,4 @@ class Piece:
         self.__color = color
         self.__current_position = current_position
         self.__shorthand = color[0].upper() + name[0].upper()
-        self.__power = power
+        self.__ability = ability
