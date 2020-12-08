@@ -50,14 +50,17 @@ class Board:
             for position in self.__board[index]:
                 if (position != '-'):
                     piece = position
-                    print(piece.get_shorthand(), end = '   ')
+                    if (piece.get_shorthand() == "Kn"):
+                        print(piece.get_shorthand(), end = '  ')
+                    else:
+                        print(piece.get_shorthand(), end = '   ')
                 else:
                     print(position, end = '   ')
             print()
     
 def main():
     piece = pieces.Piece("pawn", "white", (3, 4))
-    other_piece = pieces.Piece("knight", "white", (0, 0))
+    other_piece = pieces.Piece("knight", "white", (1, 2))
     white_pieces = [piece, other_piece]
     board = Board(white_pieces, [])
     board.print_board()
