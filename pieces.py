@@ -20,9 +20,9 @@ class Piece:
         self.__color = color
         self.__current_position = current_position
         if (name.capitalize() == "Knight"):
-            self.__shorthand = color[0].upper() + name[0].upper() + name[1].lower()
+            self.__shorthand = name[0].upper() + name[1].lower()
         else:
-            self.__shorthand = color[0].upper() + name[0].upper()
+            self.__shorthand = name[0].upper()
         self.__moves = moves
     
     def get_position(self):

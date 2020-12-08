@@ -41,26 +41,24 @@ class Board:
         prints the chess board
 
         """
-        print('  ', end = '')
+        print('  ', end = ' ')
         for num in range(8):
             print(num, end = '   ')
         print()
         for index in range(len(self.__board)):
-            print(index, end = ' ')
+            print(index, end = '  ')
             for position in self.__board[index]:
                 if (position != '-'):
                     piece = position
-                    if (piece.get_shorthand() == "WKn") or (piece.get_shorthand() == "BKn"):
-                        print(piece.get_shorthand(), end = ' ')
-                    else:
-                        print(piece.get_shorthand(), end = '  ')
+                    print(piece.get_shorthand(), end = '   ')
                 else:
                     print(position, end = '   ')
             print()
     
 def main():
-    piece = pieces.Piece("knight", "white", (0, 0))
-    white_pieces = [piece]
+    piece = pieces.Piece("pawn", "white", (3, 4))
+    other_piece = pieces.Piece("knight", "white", (0, 0))
+    white_pieces = [piece, other_piece]
     board = Board(white_pieces, [])
     board.print_board()
 
