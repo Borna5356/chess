@@ -79,8 +79,7 @@ def setup():
     return board
 
 def main():
-    chess_board = setup()
-    chess_board.print_board()
+    pass
 
 if (__name__ == "__main__"):
     main()
