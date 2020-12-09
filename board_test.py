@@ -1,5 +1,6 @@
 import board
 import pieces
+import io
 
 def test_init():
     #setup
@@ -12,3 +13,5 @@ def test_init():
 
     #analyze
     assert chess_board
+
+

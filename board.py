@@ -37,6 +37,13 @@ class Board:
         for piece in self.__black_pieces:
             position = piece.get_position()
             self.__board[position[0]][position[1]] = piece
+    
+    def get_board(self):
+        """
+        This constructor returns the board
+
+        """
+        return self.__board
 
     def change_position(self, current_position, new_position):
         """
