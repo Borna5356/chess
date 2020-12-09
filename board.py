@@ -4,7 +4,7 @@ the game
 
 """
 
-import pieces
+import pieces, moves
 
 class Board:
     """
@@ -38,6 +38,19 @@ class Board:
             position = piece.get_position()
             self.__board[position[0]][position[1]] = piece
 
+    def change_position(self, current_position, new_position):
+        """
+        Changes the position of the pieces on the board
+
+        """
+        current_row = current_position[0]
+        current_col = current_position[1]
+        new_row = new_position[0]
+        new_col = new_position[1]
+        piece = self.__board[current_row][current_col]
+        self.__board[new_row][new_col] = piece
+        self.__board[current_row][current_col] = '-'
+        
     
     def print_board(self):
         """
@@ -81,7 +94,13 @@ def setup():
     return board
 
 def main():
-    pass
+    pawn = pieces.Piece("pawn", "white", (6, 2), moves.move_pawn)
+    white_pieces = [pawn]
+    chess_board = Board(white_pieces, [])
+    chess_board.print_board()
+    print()
+    pawn.make_move(chess_board)
+    chess_board.print_board()
 
 if (__name__ == "__main__"):
     main()

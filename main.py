@@ -8,6 +8,7 @@ import pieces, board
 def main():
     chess_board = board.setup()
     chess_board.print_board()
+    
 
 if (__name__ == "__main__"):
     main()

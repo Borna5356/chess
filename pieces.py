@@ -49,7 +49,7 @@ class Piece:
         """
         return self.__color
     
-    def make_move(self):
+    def make_move(self, board):
         """
         This method moves the piece
         from one position to another
@@ -60,6 +60,7 @@ class Piece:
         movement = self.__move_func(self)
         new_row = (current_row + movement[0])
         new_col = (current_col + movement[1])
+        board.change_position(self.__current_position, (new_row, new_col))
         self.__current_position = (new_row, new_col)
 
 def make_white_pieces():
