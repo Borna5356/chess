@@ -4,7 +4,7 @@ def test_init():
     #setup none
 
     #invoke
-    pawn = pieces.Piece("pawn", "White", (0, 0))
+    pawn = pieces.Piece("pawn", "White", (0, 0), None)
 
     #analyize
     assert pawn

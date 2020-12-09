@@ -4,7 +4,7 @@ import io
 
 def test_init():
     #setup
-    piece = pieces.Piece("pawn", "white", (0, 0))
+    piece = pieces.Piece("pawn", "white", (0, 0), None)
     white_pieces = [piece]
     black_pieces = []
 
