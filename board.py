@@ -94,12 +94,17 @@ def setup():
     return board
 
 def main():
-    pawn = pieces.Piece("pawn", "white", (6, 2), moves.move_pawn)
-    white_pieces = [pawn]
-    chess_board = Board(white_pieces, [])
+    white_pawn = pieces.Piece("pawn", "white", (6, 2), moves.move_pawn)
+    white_pieces = [white_pawn]
+    black_pawn = pieces.Piece("pawn", "black", (1, 2), moves.move_pawn)
+    black_pieces = [black_pawn]
+    chess_board = Board(white_pieces, black_pieces)
     chess_board.print_board()
     print()
-    pawn.make_move(chess_board)
+    white_pawn.make_move(chess_board)
+    chess_board.print_board()
+    print()
+    black_pawn.make_move(chess_board)
     chess_board.print_board()
 
 if (__name__ == "__main__"):

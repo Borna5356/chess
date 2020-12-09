@@ -13,4 +13,7 @@ def move_pawn(pawn):
     a pawn can do
 
     """
-    return (-1, 0)
+    if (pawn.get_color() == "black"):
+        return (1, 0)
+    else:
+        return (-1, 0)
