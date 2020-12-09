@@ -57,15 +57,19 @@ def make_white_pieces():
     for col_num in range(8):
         pawn = Piece("pawn", "white", (6, col_num))
         white_pieces.append(pawn)
+
     for col_num in range(0, 8, 7):
         rook = Piece("rook", "white", (7, col_num))
         white_pieces.append(rook)
+
     for col_num in range(1, 7, 5):
         knight = Piece("knight", "white", (7, col_num))
         white_pieces.append(knight)
+
     for col_num in range(2, 6, 3):
         bishop = Piece("bishop", "white", (7, col_num))
         white_pieces.append(bishop)
+
     king = Piece("king", "white", (7, 3))
     queen = Piece("queen", "white", (7,4))
     white_pieces.append(king)
@@ -82,15 +86,19 @@ def make_black_pieces():
     for col_num in range(8):
         pawn = Piece("pawn", "black", (1, col_num))
         black_pieces.append(pawn)
+
     for col_num in range(0, 8, 7):
         rook = Piece("rook", "black", (0, col_num))
         black_pieces.append(rook)
+
     for col_num in range(1, 7, 5):
         knight = Piece("knight", "black", (0, col_num))
         black_pieces.append(knight)
+
     for col_num in range(2, 6, 3):
         bishop = Piece("bishop", "black", (0, col_num))
         black_pieces.append(bishop)
+        
     king = Piece("king", "black", (0, 3))
     queen = Piece("queen", "black", (0, 4))
     black_pieces.append(king)
