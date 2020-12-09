@@ -35,6 +35,7 @@ class Board:
         for piece in self.__black_pieces:
             position = piece.get_position()
             self.__board[position[0]][position[1]] = piece
+
     
     def print_board(self):
         """
@@ -65,20 +66,21 @@ class Board:
                 else:
                     print(position, end = '   ')
             print()
-    
+
+def setup():
+    """
+    This method sets up the board 
+    for the game to begin
+
+    """
+    white_pieces = pieces.make_white_pieces()
+    black_pieces = pieces.make_black_pieces()
+    board = Board(white_pieces, black_pieces)
+    return board
+
 def main():
-    black_pieces = []
-    for col_num in range(8):   
-        pawn = pieces.Piece("pawn", "black", (1, col_num))
-        black_pieces.append(pawn)
-    knight = pieces.Piece("knight", "black", (0, 1))
-    black_pieces.append(knight)
-    queen = pieces.Piece("queen", "black", (0, 4))
-    king = pieces.Piece("king", "black", (0, 3))
-    black_pieces.append(queen)
-    black_pieces.append(king)
-    board = Board([], black_pieces)
-    board.print_board()
+    chess_board = setup()
+    chess_board.print_board()
 
 if (__name__ == "__main__"):
     main()
