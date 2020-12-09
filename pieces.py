@@ -3,6 +3,8 @@ This file handles the creation of
 different pieces in chess
 
 """
+import moves, board
+
 class Piece:
     """
     This class handles the cretation of 
@@ -46,6 +48,19 @@ class Piece:
 
         """
         return self.__color
+    
+    def make_move(self):
+        """
+        This method moves the piece
+        from one position to another
+
+        """
+        current_row = self.__current_position[0]
+        current_col = self.__current_position[1]
+        movement = self.__move_func(self)
+        new_row = (current_row + movement[0])
+        new_col = (current_col + movement[1])
+        self.__current_position = (new_row, new_col)
 
 def make_white_pieces():
     """
@@ -55,7 +70,7 @@ def make_white_pieces():
     """
     white_pieces = []
     for col_num in range(8):
-        pawn = Piece("pawn", "white", (6, col_num))
+        pawn = Piece("pawn", "white", (6, col_num), moves.move_pawn)
         white_pieces.append(pawn)
 
     for col_num in range(0, 8, 7):
@@ -98,9 +113,10 @@ def make_black_pieces():
     for col_num in range(2, 6, 3):
         bishop = Piece("bishop", "black", (0, col_num))
         black_pieces.append(bishop)
-        
+
     king = Piece("king", "black", (0, 3))
     queen = Piece("queen", "black", (0, 4))
     black_pieces.append(king)
     black_pieces.append(queen)
     return black_pieces
+

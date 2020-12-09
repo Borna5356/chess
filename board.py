@@ -1,9 +1,11 @@
-import pieces
 """
 This handles the board of
 the game
 
 """
+
+import pieces
+
 class Board:
     """
     This class handles the board
