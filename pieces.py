@@ -13,7 +13,7 @@ class Piece:
     """
     __slots__ = ["__name", "__color","__current_position", "__shorthand", "__move_func"]
 
-    def __init__(self, name, color, current_position, move_func = None):
+    def __init__(self, name, color, current_position, move_func):
         """
         initializes a piece
 
@@ -75,19 +75,19 @@ def make_white_pieces():
         white_pieces.append(pawn)
 
     for col_num in range(0, 8, 7):
-        rook = Piece("rook", "white", (7, col_num))
+        rook = Piece("rook", "white", (7, col_num), None)
         white_pieces.append(rook)
 
     for col_num in range(1, 7, 5):
-        knight = Piece("knight", "white", (7, col_num))
+        knight = Piece("knight", "white", (7, col_num), None)
         white_pieces.append(knight)
 
     for col_num in range(2, 6, 3):
-        bishop = Piece("bishop", "white", (7, col_num))
+        bishop = Piece("bishop", "white", (7, col_num), None)
         white_pieces.append(bishop)
 
-    king = Piece("king", "white", (7, 3))
-    queen = Piece("queen", "white", (7,4))
+    king = Piece("king", "white", (7, 3), None)
+    queen = Piece("queen", "white", (7,4), None)
     white_pieces.append(king)
     white_pieces.append(queen)
     return white_pieces
@@ -100,23 +100,23 @@ def make_black_pieces():
     """
     black_pieces = []
     for col_num in range(8):
-        pawn = Piece("pawn", "black", (1, col_num))
+        pawn = Piece("pawn", "black", (1, col_num), moves.move_pawn)
         black_pieces.append(pawn)
 
     for col_num in range(0, 8, 7):
-        rook = Piece("rook", "black", (0, col_num))
+        rook = Piece("rook", "black", (0, col_num), None)
         black_pieces.append(rook)
 
     for col_num in range(1, 7, 5):
-        knight = Piece("knight", "black", (0, col_num))
+        knight = Piece("knight", "black", (0, col_num), None)
         black_pieces.append(knight)
 
     for col_num in range(2, 6, 3):
-        bishop = Piece("bishop", "black", (0, col_num))
+        bishop = Piece("bishop", "black", (0, col_num), None)
         black_pieces.append(bishop)
 
-    king = Piece("king", "black", (0, 3))
-    queen = Piece("queen", "black", (0, 4))
+    king = Piece("king", "black", (0, 3), None)
+    queen = Piece("queen", "black", (0, 4), None)
     black_pieces.append(king)
     black_pieces.append(queen)
     return black_pieces
