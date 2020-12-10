@@ -49,6 +49,23 @@ class Piece:
 
         """
         return self.__color
+
+    def get_has_moved(self):
+        """
+        This constructor gets the
+        value for has_moved field
+        and return it
+        
+        """
+        return self.__has_moved
+    
+    def set_has_moved(self):
+        """
+        sets the has_moved field
+        to True
+
+        """
+        self.__has_moved = True
     
     def make_move(self, board):
         """

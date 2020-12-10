@@ -21,17 +21,24 @@ def move_pawn(pawn, board):
     vertical_black_moves = [(1, 0)]
     diagonal_white_moves = [(-1, 1), (-1, -1)]
     vertical_white_moves = [(-1, 0)]
+    has_moved = pawn.get_has_moved()
 
     if (pawn.get_color() == "black"):
-        new_row = current_position[0] + 1
-        new_col = current_position[1] + 0
-        if (new_row < 0) or (new_row > 7) or (new_col < 0) or (new_col > 7):
-             pass
-        else:
-            if (chess_board[new_row][new_col] == '-'):
-                new_positions.append((new_row, new_col))
-            else:
+        if (has_moved == False):
+            vertical_black_moves.append((2, 0))
+            pawn.set_has_moved()
+
+        for move in vertical_black_moves:
+            new_row = current_position[0] + move[0]
+            new_col = current_position[1] + move[1]
+            if (new_row < 0) or (new_row > 7) or (new_col < 0) or (new_col > 7):
                 pass
+            else:
+                if (chess_board[new_row][new_col] == '-'):
+                    new_positions.append((new_row, new_col))
+                else:
+                    pass
+
         for move in diagonal_black_moves:
             new_row = current_position[0] + move[0]
             new_col = current_position[1] + move[1]
@@ -46,15 +53,19 @@ def move_pawn(pawn, board):
                         pass
 
     else:
-        new_row = current_position[0] - 1
-        new_col = current_position[1] + 0
-        if (new_row < 0) or (new_row > 7) or (new_col < 0) or (new_col > 7):
-            pass
-        else:
-            if (chess_board[new_row][new_col] == '-'):
-                new_positions.append((new_row, new_col))
-            else:
+        if (has_moved == False):
+            vertical_white_moves.append((-2, 0))
+            pawn.set_has_moved()
+        for move in vertical_white_moves:
+            new_row = current_position[0] + move[0]
+            new_col = current_position[1] + move[1]
+            if (new_row < 0) or (new_row > 7) or (new_col < 0) or (new_col > 7):
                 pass
+            else:
+                if (chess_board[new_row][new_col] == '-'):
+                    new_positions.append((new_row, new_col))
+                else:
+                    pass
 
         for move in diagonal_white_moves:
             new_row = current_position[0] + move[0]
