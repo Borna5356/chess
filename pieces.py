@@ -57,9 +57,9 @@ class Piece:
         """
         current_row = self.__current_position[0]
         current_col = self.__current_position[1]
-        movement = self.__move_func(self)
-        new_row = (current_row + movement[0])
-        new_col = (current_col + movement[1])
+        new_position = self.__move_func(self, board)
+        new_row = (new_position[0])
+        new_col = (new_position[1])
         board.change_position(self.__current_position, (new_row, new_col))
         self.__current_position = (new_row, new_col)
 
@@ -79,7 +79,7 @@ def make_white_pieces():
         white_pieces.append(rook)
 
     for col_num in range(1, 7, 5):
-        knight = Piece("knight", "white", (7, col_num), None)
+        knight = Piece("knight", "white", (7, col_num), moves.move_knight)
         white_pieces.append(knight)
 
     for col_num in range(2, 6, 3):
@@ -108,7 +108,7 @@ def make_black_pieces():
         black_pieces.append(rook)
 
     for col_num in range(1, 7, 5):
-        knight = Piece("knight", "black", (0, col_num), None)
+        knight = Piece("knight", "black", (0, col_num), moves.move_knight)
         black_pieces.append(knight)
 
     for col_num in range(2, 6, 3):

@@ -6,7 +6,7 @@ import io
 
 def test_choose_piece(monkeypatch):
     #setup
-    monkeypatch.setattr("sys.stdin", io.StringIO("0,0"))
+    monkeypatch.setattr("sys.stdin", io.StringIO("0 0"))
     piece = pieces.Piece("pawn", "white", (0, 0), moves.move_pawn)
     white_pieces = [piece]
     black_pieces = []

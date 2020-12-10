@@ -13,6 +13,7 @@ def main():
     for count in range(2):
         piece = player.choose_piece(chess_board)
         piece.make_move(chess_board)
+        print()
         chess_board.print_board()
     
 
