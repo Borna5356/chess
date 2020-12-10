@@ -26,14 +26,6 @@ def move_pawn(pawn, board):
 def move_knight(knight, board):
     """
     This function is for moving knights
-    (2, 1)
-    (-2, 1)
-    (2, -1)
-    (-2, -1)
-    (1, 2)
-    (1, -2)
-    (-1, 2)
-    (-1, -2)
 
     """
     moves = [(2, 1), (-2, 1), (2, -1), (-2, -1), (1, 2), (1, -2), (-1, 2), (-1, -2)]
