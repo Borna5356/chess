@@ -72,19 +72,19 @@ class Board:
             print(index, end = '  ')
             for position in self.__board[index]:
                 if (position != '-'):
-                    pawn = position
-                    if (pawn.get_color() == "black"):
+                    piece = position
+                    if (piece.get_color() == "black"):
 
-                        if (pawn.get_shorthand() == "Kn"):
-                            print("\033[34m" + pawn.get_shorthand() + "\033[37m", end = '  ')
+                        if (piece.get_shorthand() == "Kn"):
+                            print("\033[34m" + piece.get_shorthand() + "\033[37m", end = '  ')
                         else:
-                            print("\033[34m" + pawn.get_shorthand() + "\033[37m", end = '   ')
+                            print("\033[34m" + piece.get_shorthand() + "\033[37m", end = '   ')
 
                     else:
-                        if (pawn.get_shorthand() == "Kn"):
-                            print(pawn.get_shorthand(), end = '  ')
+                        if (piece.get_shorthand() == "Kn"):
+                            print(piece.get_shorthand(), end = '  ')
                         else:
-                            print(pawn.get_shorthand(), end = '   ')
+                            print(piece.get_shorthand(), end = '   ')
                 else:
                     print(position, end = '   ')
             print()
