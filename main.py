@@ -10,7 +10,7 @@ import player
 def main():
     chess_board = board.setup()
     chess_board.print_board()
-    for count in range(4):
+    for moves in range(5):
         piece = player.choose_piece(chess_board)
         piece.make_move(chess_board)
         print()
