@@ -45,7 +45,11 @@ def move_knight(knight, board):
             if (current_board[new_row][new_col] == '-'):
                 new_positions.append((new_row, new_col))
             else:
-                continue
+                other_piece = current_board[new_row][new_col]
+                if (knight.get_color() != other_piece.get_color()):
+                    new_positions.append((new_row, new_col))
+                else:
+                    continue
 
     new_position = input("Enter the position to move your knight to Ex.(2 3): ")
     new_position = new_position.split(' ')
