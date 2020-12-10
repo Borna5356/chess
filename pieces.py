@@ -11,7 +11,7 @@ class Piece:
     different types of pieces
 
     """
-    __slots__ = ["__name", "__color","__current_position", "__shorthand", "__move_func"]
+    __slots__ = ["__name", "__color","__current_position", "__shorthand", "__move_func", "__has_moved"]
 
     def __init__(self, name, color, current_position, move_func):
         """
@@ -26,6 +26,7 @@ class Piece:
         else:
             self.__shorthand = name[0].upper()
         self.__move_func = move_func
+        self.__has_moved = False
     
     def get_position(self):
         """

@@ -101,7 +101,7 @@ def setup():
     return board
 
 def main():
-    white_pawn = pieces.Piece("pawn", "white", (6, 2), moves.move_pawn)
+    white_pawn = pieces.Piece("pawn", "white", (0, 2), moves.move_pawn)
     white_pieces = [white_pawn]
     black_pawn = pieces.Piece("pawn", "black", (1, 2), moves.move_pawn)
     black_pieces = [black_pawn]
