@@ -26,15 +26,16 @@ def move_pawn(pawn, board):
         if (chess_board[new_row][new_col] == '-'):
             new_positions.append((new_row, new_col))
         else:
-            for move in black_moves:
-                new_row = current_position[0] + move[0]
-                new_col = current_position[1] + move[1]
-                if (chess_board[new_row][new_col] != '-'):
-                    other_piece = chess_board[new_row][new_col]
-                    if (pawn.get_color() != other_piece.get_color()):
-                        new_positions.append((new_row, new_col))
-                    else:
-                        pass
+            pass
+        for move in black_moves:
+            new_row = current_position[0] + move[0]
+            new_col = current_position[1] + move[1]
+            if (chess_board[new_row][new_col] != '-'):
+                other_piece = chess_board[new_row][new_col]
+                if (pawn.get_color() != other_piece.get_color()):
+                    new_positions.append((new_row, new_col))
+                else:
+                    pass
 
     else:
         new_row = current_position[0] - 1
@@ -42,15 +43,17 @@ def move_pawn(pawn, board):
         if (chess_board[new_row][new_col] == '-'):
             new_positions.append((new_row, new_col))
         else:
-            for move in white_moves:
-                new_row = current_position[0] + move[0]
-                new_col = current_position[1] + move[1]
-                if (chess_board[new_row][new_col] != '-'):
-                    other_piece = chess_board[new_row][new_col]
-                    if (pawn.get_color() != other_piece.get_color()):
-                        new_positions.append((new_row, new_col))
-                    else:
-                        pass
+            pass
+
+        for move in white_moves:
+            new_row = current_position[0] + move[0]
+            new_col = current_position[1] + move[1]
+            if (chess_board[new_row][new_col] != '-'):
+                other_piece = chess_board[new_row][new_col]
+                if (pawn.get_color() != other_piece.get_color()):
+                    new_positions.append((new_row, new_col))
+                else:
+                    pass
 
     new_position = input("Enter the position to move your pawn to Ex.(2 3): ")
     new_position = new_position.split(' ')
