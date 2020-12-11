@@ -66,7 +66,7 @@ def find_positions(pawn, board, vertical_moves, diagonal_moves):
             if (chess_board[new_row][new_col] == '-'):
                 new_positions.append((new_row, new_col))
             else:
-                pass
+                break
 
     for move in diagonal_moves:
         new_row = current_position[0] + move[0]
