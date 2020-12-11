@@ -127,4 +127,13 @@ def move_knight(knight, board):
             new_row = int(new_position[1])
             new_col = int(new_position[0])
         return (new_row, new_col)
-    
+
+def move_king(king, board):
+    """
+    This function is for moving the
+    position of the king
+
+    """
+    movements = [(1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (1, -1), (-1, -1), (-1, 1)]
+    current_position = king.get_position()
+    new_positions = []

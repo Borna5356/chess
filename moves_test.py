@@ -3,9 +3,10 @@ import board
 import pieces
 import io
 
-def test_move_white_pawn():
+def test_move_white_pawn(monkeypatch):
     #setup
     pawn = pieces.Piece("pawn", "white", (1, 0), moves.move_pawn)
+    monkeypatch.setattr("sys.stdin",io.StringIO("0 0"))
     white_pieces = [pawn]
     chess_board = board.Board(white_pieces, [])
     expected = (0, 0)
@@ -16,9 +17,10 @@ def test_move_white_pawn():
     #analyze
     assert expected == actual
 
-def test_move_black_pawn():
+def test_move_black_pawn(monkeypatch):
     #setup
     pawn = pieces.Piece("pawn", "black", (1, 0), moves.move_pawn)
+    monkeypatch.setattr("sys.stdin",io.StringIO("0 2"))
     white_pieces = [pawn]
     chess_board = board.Board(white_pieces, [])
     expected = (2, 0)
