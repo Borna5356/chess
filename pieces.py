@@ -76,10 +76,14 @@ class Piece:
         current_row = self.__current_position[0]
         current_col = self.__current_position[1]
         new_position = self.__move_func(self, board)
-        new_row = (new_position[0])
-        new_col = (new_position[1])
-        board.change_position(self.__current_position, (new_row, new_col))
-        self.__current_position = (new_row, new_col)
+        if (new_position == None):
+            return False
+        else:
+            new_row = (new_position[0])
+            new_col = (new_position[1])
+            board.change_position(self.__current_position, (new_row, new_col))
+            self.__current_position = (new_row, new_col)
+            return True
 
 def make_white_pieces():
     """

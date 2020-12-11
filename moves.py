@@ -25,18 +25,21 @@ def move_pawn(pawn, board):
     else:
         new_positions = find_positions(pawn, board, vertical_white_moves, diagonal_white_moves)
 
-    new_position = input("Enter the position to move your pawn to Ex.(2 3): ")
-    new_position = new_position.split(' ')
-    new_row = int(new_position[1])
-    new_col = int(new_position[0])
-    
-    while ((new_row, new_col) not in new_positions):
-        new_position = input("You can\'t move to that position. Try again Ex.(2 3): ")
+    if (len(new_positions) == 0):
+        return None
+    else:
+        new_position = input("Enter the position to move your pawn to Ex.(2 3): ")
         new_position = new_position.split(' ')
         new_row = int(new_position[1])
         new_col = int(new_position[0])
+        
+        while ((new_row, new_col) not in new_positions):
+            new_position = input("You can\'t move to that position. Try again Ex.(2 3): ")
+            new_position = new_position.split(' ')
+            new_row = int(new_position[1])
+            new_col = int(new_position[0])
 
-    return (new_row, new_col)
+        return (new_row, new_col)
 
 def find_positions(pawn, board, vertical_moves, diagonal_moves):
 
@@ -109,16 +112,19 @@ def move_knight(knight, board):
                     new_positions.append((new_row, new_col))
                 else:
                     continue
-
-    new_position = input("Enter the position to move your knight to Ex.(2 3): ")
-    new_position = new_position.split(' ')
-    new_row = int(new_position[1])
-    new_col = int(new_position[0])
-
-    while ((new_row, new_col) not in new_positions):
-        new_position = input("You can\'t move to that position. Try again Ex.(2 3): ")
+    
+    if (len(new_positions) == 0):
+        return None
+    else:
+        new_position = input("Enter the position to move your knight to Ex.(2 3): ")
         new_position = new_position.split(' ')
         new_row = int(new_position[1])
         new_col = int(new_position[0])
-    return (new_row, new_col)
+
+        while ((new_row, new_col) not in new_positions):
+            new_position = input("You can\'t move to that position. Try again Ex.(2 3): ")
+            new_position = new_position.split(' ')
+            new_row = int(new_position[1])
+            new_col = int(new_position[0])
+        return (new_row, new_col)
     
