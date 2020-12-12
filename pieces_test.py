@@ -20,7 +20,7 @@ def test_make_move_white(monkeypatch):
     expected_position = (5, 2)
 
     #invoke
-    pawn.make_move(chess_board)
+    pawn.move(chess_board)
 
     #analyze
     assert expected_position == pawn.get_position()
@@ -33,7 +33,7 @@ def test_make_move_black(monkeypatch):
     expected_position = (2, 2)
 
     #invoke
-    pawn.make_move(chess_board)
+    pawn.move(chess_board)
 
     #analyze
     assert expected_position == pawn.get_position()

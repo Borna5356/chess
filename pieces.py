@@ -28,6 +28,13 @@ class Piece:
         self.__move_func = move_func
         self.__has_moved = False
     
+    def get_name(self):
+        """
+        returns the name of the instance
+
+        """
+        return self.__name
+    
     def get_position(self):
         """
         gets the current position of the piece
@@ -67,7 +74,7 @@ class Piece:
         """
         self.__has_moved = True
     
-    def make_move(self, board):
+    def move(self, board):
         """
         This method moves the piece
         from one position to another
@@ -93,7 +100,7 @@ def make_white_pieces():
     """
     white_pieces = []
     for col_num in range(8):
-        pawn = Piece("pawn", "white", (6, col_num), moves.move_pawn)
+        pawn = Piece("pawn", "white", (6, col_num), moves.move_piece)
         white_pieces.append(pawn)
 
     for col_num in range(0, 8, 7):
@@ -101,14 +108,14 @@ def make_white_pieces():
         white_pieces.append(rook)
 
     for col_num in range(1, 7, 5):
-        knight = Piece("knight", "white", (7, col_num), moves.move_knight)
+        knight = Piece("knight", "white", (7, col_num), moves.move_piece)
         white_pieces.append(knight)
 
     for col_num in range(2, 6, 3):
         bishop = Piece("bishop", "white", (7, col_num), None)
         white_pieces.append(bishop)
 
-    king = Piece("king", "white", (7, 3), None)
+    king = Piece("king", "white", (7, 3), moves.move_piece)
     queen = Piece("queen", "white", (7,4), None)
     white_pieces.append(king)
     white_pieces.append(queen)
@@ -122,7 +129,7 @@ def make_black_pieces():
     """
     black_pieces = []
     for col_num in range(8):
-        pawn = Piece("pawn", "black", (1, col_num), moves.move_pawn)
+        pawn = Piece("pawn", "black", (1, col_num), moves.move_piece)
         black_pieces.append(pawn)
 
     for col_num in range(0, 8, 7):
@@ -130,14 +137,14 @@ def make_black_pieces():
         black_pieces.append(rook)
 
     for col_num in range(1, 7, 5):
-        knight = Piece("knight", "black", (0, col_num), moves.move_knight)
+        knight = Piece("knight", "black", (0, col_num), moves.move_piece)
         black_pieces.append(knight)
 
     for col_num in range(2, 6, 3):
         bishop = Piece("bishop", "black", (0, col_num), None)
         black_pieces.append(bishop)
 
-    king = Piece("king", "black", (0, 3), None)
+    king = Piece("king", "black", (0, 3), moves.move_piece)
     queen = Piece("queen", "black", (0, 4), None)
     black_pieces.append(king)
     black_pieces.append(queen)
