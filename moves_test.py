@@ -44,3 +44,17 @@ def test_move_knight(monkeypatch):
 
     #analyze
     assert expected == actual
+
+def test_queen_diagnol(monkeypatch):
+    #setup
+    queen = pieces.Piece("queen", "black", (1, 0), moves.move_queen)
+    monkeypatch.setattr("sys.stdin",io.StringIO("1 2"))
+    white_pieces = [queen]
+    chess_board = board.Board(white_pieces, [])
+    expected = (2, 1)
+
+    #invoke
+    actual = moves.move_queen(queen, chess_board)
+
+    #analyze
+    assert expected == actual
