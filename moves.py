@@ -157,10 +157,17 @@ def move_queen(queen, board):
             else:
                 print("That is a not a valid move")
                 continue
+
         elif (change_in_row != 0) and (change_in_col == 0):
             pass
+
         elif( change_in_col != 0) and (change_in_row == 0):
-            pass
+            is_valid = check_horezontal(current_board, current_position, change_in_col)
+            if (is_valid == True):
+                return (new_row, new_col)
+            else:
+                print("That is not a valid move")
+                
         else:
             print("That is not a valid move")
             continue
@@ -190,6 +197,30 @@ def check_diagnol(board, current_position, change_in_row, change_in_col):
         else:
             return False
     return True
+
+def check_horezontal(board, current_position, change_in_col):
+    """
+    This function checks to make sure that 
+    the spaces in the horezontal path are
+    open
+
+    """
+
+    row = current_position[0]
+    column = current_position[1]
+    if (change_in_col < 0):
+        increment = -1
+    else:
+        increment = 1
+    
+    for spaces in range(abs(change_in_col)):
+        check_column = column + increment * (spaces + 1)
+        if (is_space_empty(board, row, check_column)):
+            continue
+        else:
+            return False
+    return True
+
 
 def is_space_empty(board, row, col):
     """
