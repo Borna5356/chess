@@ -143,6 +143,7 @@ def move_queen(queen, board):
     current_row = current_position[0]
     current_col = current_position[1]
     color = queen.get_color()
+
     while (True):
         new_position = input("Enter the position that you want to move the queen to Ex.(1 4): ")
         new_position = new_position.split(' ')
@@ -150,6 +151,7 @@ def move_queen(queen, board):
         new_col = int(new_position[0])
         change_in_row = new_row - current_row
         change_in_col = new_col - current_col
+
         if (abs(change_in_row) == abs(change_in_col)):
             is_valid = check_diagnol(current_board, current_position, change_in_row, change_in_col)
             if (is_valid == True):
@@ -159,7 +161,11 @@ def move_queen(queen, board):
                 continue
 
         elif (change_in_row != 0) and (change_in_col == 0):
-            pass
+            is_valid = check_vertical(current_board, current_position, change_in_row)
+            if (is_valid == True):
+                return (new_row, new_col)
+            else:
+                print("That is not a valid move")
 
         elif( change_in_col != 0) and (change_in_row == 0):
             is_valid = check_horezontal(current_board, current_position, change_in_col)
@@ -167,10 +173,11 @@ def move_queen(queen, board):
                 return (new_row, new_col)
             else:
                 print("That is not a valid move")
-                
+
         else:
             print("That is not a valid move")
             continue
+
 
 def check_diagnol(board, current_position, change_in_row, change_in_col):
     """
@@ -198,6 +205,7 @@ def check_diagnol(board, current_position, change_in_row, change_in_col):
             return False
     return True
 
+
 def check_horezontal(board, current_position, change_in_col):
     """
     This function checks to make sure that 
@@ -207,15 +215,37 @@ def check_horezontal(board, current_position, change_in_col):
     """
 
     row = current_position[0]
-    column = current_position[1]
+    col = current_position[1]
     if (change_in_col < 0):
         increment = -1
     else:
         increment = 1
     
     for spaces in range(abs(change_in_col)):
-        check_column = column + increment * (spaces + 1)
+        check_column = col + increment * (spaces + 1)
         if (is_space_empty(board, row, check_column)):
+            continue
+        else:
+            return False
+    return True
+
+
+def check_vertical(board, current_position, change_in_row):
+    """
+    checks to see if the vertical spaces 
+    are open
+
+    """
+    row = current_position[0]
+    col = current_position[1]
+    if (change_in_row < 0):
+        increment = -1
+    else:
+        increment = 1
+    
+    for spaces in range(abs(change_in_row)):
+        check_row = row + increment * (spaces + 1)
+        if (is_space_empty(board, check_row, col)):
             continue
         else:
             return False

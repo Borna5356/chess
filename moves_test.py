@@ -62,7 +62,27 @@ def test_queen_diagnol(monkeypatch):
 def test_queen_horezontal(monkeypatch):
     #setup
     queen = pieces.Piece("queen", "white", (1, 0), moves.move_queen)
-    monkeypatch.setattr("sys.stdin",io.StringIO("2 0"))
+    monkeypatch.setattr("sys.stdin",io.StringIO("2 1"))
     white_pieces = [queen]
     chess_board = board.Board(white_pieces, [])
     expected = (1, 2)
+    
+    #invoke
+    actual = moves.move_queen(queen, chess_board)
+
+    #analyze
+    assert expected == actual
+
+def test_queen_vertical(monkeypatch):
+    #setup
+    queen = pieces.Piece("queen", "white", (1, 0), moves.move_queen)
+    monkeypatch.setattr("sys.stdin",io.StringIO("0 4"))
+    white_pieces = [queen]
+    chess_board = board.Board(white_pieces, [])
+    expected = (4, 0)
+    
+    #invoke
+    actual = moves.move_queen(queen, chess_board)
+
+    #analyze
+    assert expected == actual
