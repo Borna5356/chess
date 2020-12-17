@@ -149,11 +149,12 @@ def move_queen(queen, board):
         new_position = new_position.split(' ')
         new_row = int(new_position[1])
         new_col = int(new_position[0])
+        new_position = (new_row, new_col)
         change_in_row = new_row - current_row
         change_in_col = new_col - current_col
 
         if (abs(change_in_row) == abs(change_in_col)):
-            is_valid = check_diagnol(current_board, current_position, change_in_row, change_in_col)
+            is_valid = check_diagnol(current_board, current_position, new_position, color, change_in_row, change_in_col)
             if (is_valid == True):
                 return (new_row, new_col)
             else:
@@ -179,7 +180,7 @@ def move_queen(queen, board):
             continue
 
 
-def check_diagnol(board, current_position, change_in_row, change_in_col):
+def check_diagnol(board, current_position, new_position, color, change_in_row, change_in_col):
     """
     checks if diagnol move is possible
 
@@ -202,6 +203,13 @@ def check_diagnol(board, current_position, change_in_row, change_in_col):
         if (is_space_empty(board, new_row, new_col)):
             continue
         else:
+            if ((new_row, new_col) == new_position):
+                piece = board[new_row][new_col]
+                other_color = piece.get_color()
+                if (color != other_color):
+                    return True
+                else:
+                    pass
             return False
     return True
 
