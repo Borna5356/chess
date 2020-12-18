@@ -169,7 +169,7 @@ def move_queen(queen, board):
                 print("That is not a valid move")
 
         elif( change_in_col != 0) and (change_in_row == 0):
-            is_valid = check_horezontal(current_board, current_position, change_in_col)
+            is_valid = check_horezontal(current_board, current_position, new_position, color, change_in_col)
             if (is_valid == True):
                 return (new_row, new_col)
             else:
@@ -214,7 +214,7 @@ def check_diagnol(board, current_position, new_position, color, change_in_row, c
     return True
 
 
-def check_horezontal(board, current_position, change_in_col):
+def check_horezontal(board, current_position, new_position, color, change_in_col):
     """
     This function checks to make sure that 
     the spaces in the horezontal path are
@@ -230,10 +230,17 @@ def check_horezontal(board, current_position, change_in_col):
         increment = 1
     
     for spaces in range(abs(change_in_col)):
-        check_column = col + increment * (spaces + 1)
-        if (is_space_empty(board, row, check_column)):
+        column = col + increment * (spaces + 1)
+        if (is_space_empty(board, row, column)):
             continue
         else:
+            if ((row, column) == new_position):
+                piece = board[row][column]
+                other_color = piece.get_color()
+                if (color != other_color):
+                    return True
+                else:
+                    pass
             return False
     return True
 
