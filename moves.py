@@ -143,6 +143,12 @@ def move_queen(queen, board):
     current_row = current_position[0]
     current_col = current_position[1]
     color = queen.get_color()
+    
+    if (can_move(queen, current_board, current_position) == False):
+        return None
+    
+    else:
+        pass
 
     while (True):
         new_position = input("Enter the position that you want to move the queen to Ex.(1 4): ")
@@ -299,3 +305,25 @@ def check_color(color, piece):
         return True
     else:
         return False
+
+def can_move(piece, board, current_position):
+    """
+    checks to see if a piece can move
+
+    """
+    if (piece.get_name() == "queen"):
+        moves = [(1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (1, -1), (-1, -1), (-1, 1)] #spaces around queen
+    
+    current_row =current_position[0]
+    current_col = current_position[1]
+    for move in moves:
+        new_row = current_row + move[0]
+        new_col = current_col + move[1]
+        if (0 <= new_row <= 7) and (0 <= new_col <= 7):
+            if (board[new_row][new_col] != '-'):
+                continue
+            else:
+                return True
+        else:
+            continue
+    return False
