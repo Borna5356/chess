@@ -153,32 +153,40 @@ def move_queen(queen, board):
         change_in_row = new_row - current_row
         change_in_col = new_col - current_col
 
-        if (abs(change_in_row) == abs(change_in_col)):
-            is_valid = check_diagnol(current_board, current_position, new_position, color, change_in_row, change_in_col)
-            if (is_valid == True):
-                return (new_row, new_col)
-            else:
-                print("That is a not a valid move")
-                continue
-
-        elif (change_in_row != 0) and (change_in_col == 0):
-            is_valid = check_vertical(current_board, current_position, new_position, color,change_in_row)
-            if (is_valid == True):
-                return (new_row, new_col)
-            else:
-                print("That is not a valid move")
-
-        elif( change_in_col != 0) and (change_in_row == 0):
-            is_valid = check_horezontal(current_board, current_position, new_position, color, change_in_col)
-            if (is_valid == True):
-                return (new_row, new_col)
-            else:
-                print("That is not a valid move")
-
-        else:
-            print("That is not a valid move")
+        if (new_row < 0) or (new_row > 7) or (new_col < 0) or (new_col > 7):
+            print("That is  not a valid move")
             continue
 
+        else:
+            if (abs(change_in_row) == abs(change_in_col)):
+                is_valid = check_diagnol(current_board, current_position, new_position, color, change_in_row, change_in_col)
+                if (is_valid == True):
+                    return (new_row, new_col)
+                else:
+                    print("That is a not a valid move")
+                    continue
+
+            elif (change_in_row != 0) and (change_in_col == 0):
+                is_valid = check_vertical(current_board, current_position, new_position, color,change_in_row)
+                if (is_valid == True):
+                    return (new_row, new_col)
+                else:
+                    print("That is not a valid move")
+
+            elif( change_in_col != 0) and (change_in_row == 0):
+                is_valid = check_horezontal(current_board, current_position, new_position, color, change_in_col)
+                if (is_valid == True):
+                    return (new_row, new_col)
+                else:
+                    print("That is not a valid move")
+
+            else:
+                print("That is not a valid move")
+                continue
+
+
+def move_bishop(bishop, board):
+    pass
 
 def check_diagnol(board, current_position, new_position, color, change_in_row, change_in_col):
     """
@@ -205,8 +213,7 @@ def check_diagnol(board, current_position, new_position, color, change_in_row, c
         else:
             if ((new_row, new_col) == new_position):
                 piece = board[new_row][new_col]
-                other_color = piece.get_color()
-                if (color != other_color):
+                if (check_color(color, piece)):
                     return True
                 else:
                     pass
@@ -234,8 +241,7 @@ def check_vertical(board, current_position, new_position, color, change_in_row):
         else:
             if ((check_row, col) == new_position):
                 piece = board[check_row][col]
-                other_color = piece.get_color()
-                if (color != other_color):
+                if (check_color(color, piece)):
                     return True
                 else:
                     pass
@@ -265,8 +271,7 @@ def check_horezontal(board, current_position, new_position, color, change_in_col
         else:
             if ((row, column) == new_position):
                 piece = board[row][column]
-                other_color = piece.get_color()
-                if (color != other_color):
+                if (check_color(color, piece)):
                     return True
                 else:
                     pass
@@ -281,6 +286,16 @@ def is_space_empty(board, row, col):
     """
     space = board[row][col]
     if (space == '-'):
+        return True
+    else:
+        return False
+
+def check_color(color, piece):
+    """
+    checks color of different pieces
+
+    """
+    if (color != piece.get_color()):
         return True
     else:
         return False
