@@ -112,7 +112,7 @@ def make_white_pieces():
         white_pieces.append(knight)
 
     for col_num in range(2, 6, 3):
-        bishop = Piece("bishop", "white", (7, col_num), None)
+        bishop = Piece("bishop", "white", (7, col_num), moves.move_bishop)
         white_pieces.append(bishop)
 
     king = Piece("king", "white", (7, 3), moves.move_piece)
@@ -141,7 +141,7 @@ def make_black_pieces():
         black_pieces.append(knight)
 
     for col_num in range(2, 6, 3):
-        bishop = Piece("bishop", "black", (0, col_num), None)
+        bishop = Piece("bishop", "black", (0, col_num), moves.move_bishop)
         black_pieces.append(bishop)
 
     king = Piece("king", "black", (0, 3), moves.move_piece)
