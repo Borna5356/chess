@@ -104,7 +104,7 @@ def make_white_pieces():
         white_pieces.append(pawn)
 
     for col_num in range(0, 8, 7):
-        rook = Piece("rook", "white", (7, col_num), None)
+        rook = Piece("rook", "white", (7, col_num), moves.move_rook)
         white_pieces.append(rook)
 
     for col_num in range(1, 7, 5):
@@ -133,7 +133,7 @@ def make_black_pieces():
         black_pieces.append(pawn)
 
     for col_num in range(0, 8, 7):
-        rook = Piece("rook", "black", (0, col_num), None)
+        rook = Piece("rook", "black", (0, col_num), moves.move_rook)
         black_pieces.append(rook)
 
     for col_num in range(1, 7, 5):

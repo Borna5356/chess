@@ -231,6 +231,54 @@ def move_bishop(bishop, board):
             else:
                 print("That is not a valid move")
 
+
+def move_rook(rook, board):
+    """
+    This function is for moving the rook
+
+    """
+    current_board = board.get_board()
+    current_position = rook.get_position()
+    current_row = current_position[0]
+    current_col = current_position[1]
+    color = rook.get_color()
+
+    if (can_move(rook, current_board, current_position) == False):
+        return None
+    else:
+        pass
+    
+    while (True):
+        new_position = input("Enter the position that you want to move the rook to Ex.(1 4): ")
+        new_position = new_position.split(' ')
+        new_row = int(new_position[1])
+        new_col = int(new_position[0])
+        new_position = (new_row, new_col)
+        change_in_row = new_row - current_row
+        change_in_col = new_col - current_col
+
+        if (new_row < 0) or (new_row > 7) or (new_col < 0) or (new_col > 7):
+            print("That is  not a valid move")
+            continue
+        else:
+            if (change_in_row != 0) and (change_in_col == 0):
+                is_valid = check_vertical(current_board, current_position, new_position, color,change_in_row)
+                if (is_valid == True):
+                    return (new_row, new_col)
+                else:
+                    print("That is not a valid move")
+
+            elif( change_in_col != 0) and (change_in_row == 0):
+                is_valid = check_horezontal(current_board, current_position, new_position, color, change_in_col)
+                if (is_valid == True):
+                    return (new_row, new_col)
+                else:
+                    print("That is not a valid move")
+
+            else:
+                print("That is not a valid move")
+                continue
+
 def check_diagnol(board, current_position, new_position, color, change_in_row, change_in_col):
     """
     checks if diagnol move is possible
@@ -353,6 +401,9 @@ def can_move(piece, board, current_position):
     
     elif (piece.get_name() == "bishop"):
         moves = [(1, 1), (1, -1), (-1, -1), (-1, 1)]
+    
+    elif (piece.get_name() == "rook"):
+        moves = [(1, 0), (-1, 0), (0, -1), (0, 1)]
     
     current_row =current_position[0]
     current_col = current_position[1]
