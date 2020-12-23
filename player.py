@@ -9,6 +9,11 @@ def choose_piece(chess_board):
         position = position.split(' ')
         row = int(position[1])
         column = int(position[0])
-        
-        piece = chess_board.get_board()[row][column]
-        return piece
+        if (0 <= row <= 7) and (0 <= column <= 7):
+                piece = chess_board.get_board()[row][column]
+                if (piece == '-'):
+                        return None
+                else:
+                        return piece
+        else:
+                return None
