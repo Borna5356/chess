@@ -10,7 +10,7 @@ import player
 def main():
     chess_board = board.setup()
     chess_board.print_board()
-    for moves in range(5):
+    while (True):
         while (True):
             piece = player.choose_piece(chess_board)
             if (piece == None):
