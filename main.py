@@ -16,11 +16,17 @@ def main():
             if (piece == None):
                 print("That is not a valid piece")
                 continue
+
+            elif (piece == False):
+                return None
             else:
-                if (piece.move(chess_board)):
+                move = piece.move(chess_board)
+                if (move == True):
                     print()
                     chess_board.print_board()
                     break
+                elif (move == None):
+                    continue
                 else:
                     print("You can\'t move that piece")
                     continue

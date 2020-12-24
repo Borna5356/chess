@@ -84,6 +84,8 @@ class Piece:
         current_col = self.__current_position[1]
         new_position = self.__move_func(self, board)
         if (new_position == None):
+            return None
+        elif (new_position == False):
             return False
         else:
             new_row = (new_position[0])

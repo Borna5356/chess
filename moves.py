@@ -41,9 +41,11 @@ def move_piece(piece, board):
                     continue
         
     if (len(new_positions) == 0):
-        return None
+        return False
     else:
         new_position = input("Enter the position to move your knight to Ex.(2 3): ")
+        if (new_position == "back"):
+            return None
         new_position = new_position.split(' ')
         new_row = int(new_position[1])
         new_col = int(new_position[0])
@@ -74,15 +76,19 @@ def move_pawn(pawn, board):
         new_positions = find_positions(pawn, board, vertical_white_moves, diagonal_white_moves)
 
     if (len(new_positions) == 0):
-        return None
+        return False
     else:
         new_position = input("Enter the position to move your pawn to Ex.(2 3): ")
+        if (new_position == "back"):
+            return None
         new_position = new_position.split(' ')
         new_row = int(new_position[1])
         new_col = int(new_position[0])
         
         while ((new_row, new_col) not in new_positions):
             new_position = input("You can\'t move to that position. Try again Ex.(2 3): ")
+            if (new_position == "back"):
+                return None
             new_position = new_position.split(' ')
             new_row = int(new_position[1])
             new_col = int(new_position[0])
@@ -145,13 +151,15 @@ def move_queen(queen, board):
     color = queen.get_color()
     
     if (can_move(queen, current_board, current_position) == False):
-        return None
+        return False
     
     else:
         pass
 
     while (True):
         new_position = input("Enter the position that you want to move the queen to Ex.(1 4): ")
+        if (new_position == "back"):
+            return None
         new_position = new_position.split(' ')
         new_row = int(new_position[1])
         new_col = int(new_position[0])
@@ -203,13 +211,15 @@ def move_bishop(bishop, board):
     color = bishop.get_color()
 
     if (can_move(bishop, current_board, current_position) == False):
-        return None
+        return False
     
     else:
         pass
 
     while (True):
         new_position = input("Enter the position that you want to move the bishop to Ex.(1 4): ")
+        if (new_position == "back"):
+            return None
         new_position = new_position.split(' ')
         new_row = int(new_position[1])
         new_col = int(new_position[0])
@@ -244,12 +254,14 @@ def move_rook(rook, board):
     color = rook.get_color()
 
     if (can_move(rook, current_board, current_position) == False):
-        return None
+        return False
     else:
         pass
     
     while (True):
         new_position = input("Enter the position that you want to move the rook to Ex.(1 4): ")
+        if (new_position == "back"):
+            return None
         new_position = new_position.split(' ')
         new_row = int(new_position[1])
         new_col = int(new_position[0])
