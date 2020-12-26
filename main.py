@@ -12,7 +12,27 @@ def main():
     chess_board.print_board()
     while (True):
         while (True):
-            piece = player.choose_piece(chess_board)
+            piece = player.choose_piece(chess_board, "white")
+            if (piece == None):
+                print("That is not a valid piece")
+                continue
+
+            elif (piece == False):
+                return None
+            else:
+                move = piece.move(chess_board)
+                if (move == True):
+                    print()
+                    chess_board.print_board()
+                    break
+                elif (move == None):
+                    continue
+                else:
+                    print("You can\'t move that piece")
+                    continue
+
+        while (True):
+            piece = player.choose_piece(chess_board, "black")
             if (piece == None):
                 print("That is not a valid piece")
                 continue
