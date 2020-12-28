@@ -14,7 +14,6 @@ def main():
         while (True):
             piece = player.choose_piece(chess_board, "white")
             if (piece == None):
-                print("That is not a valid piece")
                 continue
 
             elif (piece == False):
@@ -34,7 +33,6 @@ def main():
         while (True):
             piece = player.choose_piece(chess_board, "black")
             if (piece == None):
-                print("That is not a valid piece")
                 continue
 
             elif (piece == False):

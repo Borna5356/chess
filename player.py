@@ -14,7 +14,11 @@ def choose_piece(chess_board, color):
                 column = int(position[0])
                 if (0 <= row <= 7) and (0 <= column <= 7):
                         piece = chess_board.get_board()[row][column]
-                        if (piece == '-') or (piece.get_color() != color):
+                        if (piece == '-'):
+                                print("That is not a valid piece")
+                                return None
+                        elif (piece.get_color() != color):
+                                print("The color of the piece should be", color, "but was", piece.get_color())
                                 return None
                         else:
                                 return piece
